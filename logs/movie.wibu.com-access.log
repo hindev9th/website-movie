@@ -1,0 +1,10 @@
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET / HTTP/1.1" 200 18358
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET /assets/img/sidebar/comment-1.jpg HTTP/1.1" 200 8275
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET /assets/img/sidebar/comment-3.jpg HTTP/1.1" 200 10882
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET /assets/img/sidebar/comment-2.jpg HTTP/1.1" 200 11143
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET /assets/img/sidebar/comment-4.jpg HTTP/1.1" 200 12159
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET /assets/js/main.js?v= HTTP/1.1" 304 -
+127.0.0.1 - - [30/Apr/2023:17:12:47 +0700] "GET / HTTP/1.1" 200 18358
+127.0.0.1 - - [30/Apr/2023:17:12:48 +0700] "GET /assets/img/sidebar/hero-1.jpg HTTP/1.1" 200 159585
+127.0.0.1 - - [30/Apr/2023:17:12:48 +0700] "GET /assets/img/anime/trend-1.jpg HTTP/1.1" 200 51696
+127.0.0.1 - - [30/Apr/2023:17:12:48 +0700] "GET /assets/img/hero/hero-1.jpg HTTP/1.1" 200 159585

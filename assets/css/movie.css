@@ -1,0 +1,93 @@
+/*
+	Movie detail
+*/
+.share-btn {
+	margin-left: 11px;
+}
+
+.anime__details__like {
+	display: flex;
+}
+
+.anime__details__like .like, .anime__details__like .dislike {
+	display: flex;
+}
+
+.anime__details__like .like span, .anime__details__like .dislike span {
+	line-height: 17px;
+}
+
+.anime__details__like .like {
+	margin-right: 22px;
+}
+
+.anime__details__like span:not(.icon_like,.icon_dislike) {
+	margin-left: 5px;
+}
+
+.anime__details__like .dislike .icon_dislike {
+	line-height: 22px;
+}
+
+.anime__details__review .section-title{
+	display: flex;
+	justify-content: space-between;
+}
+/**
+	Movie watching
+ */
+.anime__details__episodes a.active {
+	color: #000000;
+	background: #ffffff;
+}
+
+.plyr {
+	height: auto !important;
+}
+
+.anime__details__review a.icon_like, .anime__details__review a.icon_dislike {
+	color: #ffffff;
+}
+
+.anime__details__review a.icon_like:hover, .anime__details__review a.icon_dislike:hover, .anime__details__review a.icon_like.active, .anime__details__review a.icon_dislike.active {
+	color: #e53637;
+}
+
+/**
+	header
+ */
+.account-and-search{
+	display: flex;
+	justify-content: flex-end;
+	padding: 0;
+}
+.account-and-search .search-switch , .account-and-search .header-login {
+	padding: 20px;
+	margin: 0;
+}
+.account-and-search .account{
+	margin: 0;
+}
+.account-and-search ul li ul.account-dropdown{
+	right: 0;
+	left: unset;
+}
+
+/**
+	Home
+ */
+.sidebar-describe{
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.list-genre{
+	overflow: auto;
+	display: flex;
+}
+.list-genre::-webkit-scrollbar{
+	display: none;
+}
+
