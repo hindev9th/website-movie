@@ -7,7 +7,8 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="footer__logo">
-					<a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/img/logo.svg" alt="" width="93" height="23"></a>
+					<a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/img/logo.svg" alt="" width="93"
+													 height="23"></a>
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -22,7 +23,10 @@
 			</div>
 			<div class="col-lg-3">
 				<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright ©<script>document.write(new Date().getFullYear());</script>2023 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					Copyright ©
+					<script>document.write(new Date().getFullYear());</script>
+					2023 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i>
+					by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
 			</div>
@@ -32,13 +36,16 @@
 <!-- Footer Section End -->
 <!-- Search model Begin -->
 <div class="search-model">
-	<div class="h-100 d-flex align-items-center justify-content-center">
+	<div class="h-100 d-flex align-items-center justify-content-center flex-column">
 		<div class="search-close-switch"><i class="icon_close"></i></div>
 		<form class="search-model-form">
 			<input type="text" id="search-input" placeholder="Search here.....">
 		</form>
+		<ul class="search-popup-result">
+		</ul>
 	</div>
 </div>
 <!-- Search model end -->
 <!-- Js Plugins -->
 <?php $this->load->view("include/foot"); ?>
+</html>

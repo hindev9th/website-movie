@@ -5,7 +5,7 @@
 			<div class="col-lg-12">
 				<div class="breadcrumb__links">
 					<a href="<?= base_url() ?>"><i class="fa fa-home"></i> Home</a>
-					<span><?= isset($data) ? $data->name : '' ?></span>
+					<span><?= $data->name ?? '' ?></span>
 				</div>
 			</div>
 		</div>
@@ -19,55 +19,55 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="anime__details__pic set-bg"
-						 data-setbg="<?= base_url() ?>assets/img/anime/<?= isset($data) ? $data->image : '' ?>">
+						 data-setbg="<?= base_url() ?>assets/img/anime/<?= $data->image ?? '' ?>">
 						<div class="comment"><i
 									class="fa fa-comments"></i> <?= isset($comments) ? count($comments) : 0 ?>
 						</div>
-						<div class="view"><i class="fa fa-eye"></i> <?= isset($data) ? $data->views : 0 ?></div>
+						<div class="view"><i class="fa fa-eye"></i> <?= $data->views ?? 0 ?></div>
 					</div>
 				</div>
 				<div class="col-lg-9">
 					<div class="anime__details__text">
 						<div class="anime__details__title">
-							<h3><?= isset($data) ? $data->name : '' ?></h3>
-							<span><?= isset($data) ? $data->anotherName : '' ?></span>
+							<h3><?= $data->name ?? '' ?></h3>
+							<span><?= $data->anotherName ?? '' ?></span>
 						</div>
 						<div class="anime__details__rating anime__details__like">
 							<div class="like">
 								<span class="icon_like"></span>
-								<span> <?= isset($data) ? $data->like : '' ?></span>
+								<span> <?= $data->like ?? '' ?></span>
 							</div>
 							<div class="dislike">
 								<span class="icon_dislike"></span>
-								<span> <?= isset($data) ? $data->dislike : '' ?></span>
+								<span> <?= $data->dislike ?? '' ?></span>
 							</div>
 						</div>
-						<p><?= isset($data) ? $data->describe : '' ?></p>
+						<p><?= $data->describe ?? '' ?></p>
 						<div class="anime__details__widget">
 							<div class="row">
 								<div class="col-lg-6 col-md-6">
 									<ul>
-										<li><span>Type:</span> <?= isset($data) ? $data->type : '' ?></li>
-										<li><span>Studios:</span> <?= isset($data) ? $data->studios : '' ?></li>
+										<li><span>Type:</span> <?= $data->type ?? '' ?></li>
+										<li><span>Studios:</span> <?= $data->studios ?? '' ?></li>
 										<li>
-											<span>Date aired:</span> <?= isset($data) ? date("d-m-Y", strtotime($data->dateAired)) : '' ?>
+											<span>Date aired:</span> <?= date("d-m-Y", strtotime($data->dateAired)) ?? '' ?>
 										</li>
-										<li><span>Status:</span> <?= isset($data) ? $data->status : '' ?></li>
-										<li><span>Genre:</span> <?= isset($data) ? $data->genre : '' ?></li>
+										<li><span>Status:</span> <?= $data->status ?? '' ?></li>
+										<li><span>Genre:</span> <?= $data->genre ?? '' ?></li>
 									</ul>
 								</div>
 								<div class="col-lg-6 col-md-6">
 									<ul>
-										<li><span>Like:</span> <?= isset($data) ? $data->like : '' ?></li>
-										<li><span>Dislike:</span> <?= isset($data) ? $data->dislike : '' ?></li>
+										<li><span>Like:</span> <?= $data->like ?? '' ?></li>
+										<li><span>Dislike:</span> <?= $data->dislike ?? '' ?></li>
 										<li><span>Episodes:</span>
 											<?php if (isset($data)):
 												echo $data->episodes . ' / ' . ($data->totalEpisode > 0 ? $data->totalEpisode : '?');
 											endif; ?>
 										</li>
-										<li><span>Quality:</span> <?= isset($data) ? $data->quality : '' ?></li>
+										<li><span>Quality:</span> <?= $data->quality ?? '' ?></li>
 										<li>
-											<span>Views:</span> <?= isset($data) ? number_format($data->views, 0, ',', '.') : '' ?>
+											<span>Views:</span> <?= number_format($data->views, 0, ',', '.') ?? '' ?>
 										</li>
 									</ul>
 								</div>
@@ -178,13 +178,13 @@
 			</div>
 			<div class="modal-body">
 				<div class="anime__details__btn">
-					<a href="https://www.facebook.com/share.php?u=<?= base_url() . (isset($data) ? urlencode($data->url) : '') ?>"
+					<a href="https://www.facebook.com/share.php?u=<?= base_url() . (urlencode($data->url) ?? '') ?>"
 					   class="follow-btn share-btn-item" style="background: #1877f2;margin: 6px;"><i
 								class="fa fa-facebook"></i> Facebook</a>
-					<a href="https://twitter.com/intent/tweet?url=<?= base_url() . (isset($data) ? urlencode($data->url) : '') ?>"
+					<a href="https://twitter.com/intent/tweet?url=<?= base_url() . (urlencode($data->url) ?? '') ?>"
 					   class="follow-btn share-btn-item" style="background: #1da1f2;margin: 6px;"><i
 								class="fa fa-twitter"></i> Twitter</a>
-					<a href="https://telegram.me/share/url?url=<?= base_url() . (isset($data) ? urlencode($data->url) : '') ?>"
+					<a href="https://telegram.me/share/url?url=<?= base_url() . (urlencode($data->url) ?? '') ?>"
 					   class="follow-btn share-btn-item" style="background: #2fa5dc;margin: 6px;"><i
 								class="fa fa-telegram"></i> Telegram</a>
 				</div>

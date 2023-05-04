@@ -77,4 +77,7 @@ $route['register'] = 'user/account_controller/register_template';
 $route['register/ajax'] = 'user/account_controller/register';
 $route['logout'] = 'user/account_controller/logout';
 $route['account/follow'] = 'user/account_controller/addFollow';
-
+/**
+ * Search
+ */
+$route['search/popup'] = 'home_controller/searchPopup';

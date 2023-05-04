@@ -33,6 +33,11 @@
 	display: flex;
 	justify-content: space-between;
 }
+.anime__details__widget ul li{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
 /**
 	Movie watching
  */
@@ -56,6 +61,15 @@
 /**
 	header
  */
+.search-switch{
+	cursor: pointer;
+}
+a.search-switch:not([href]):hover{
+	color: #ffffff;
+}
+.mobile-menu-account{
+	display: none;
+}
 .account-and-search{
 	display: flex;
 	justify-content: flex-end;
@@ -89,5 +103,53 @@
 }
 .list-genre::-webkit-scrollbar{
 	display: none;
+}
+
+/**
+	Search popup
+ */
+.search-popup-result{
+	margin-top: 15px;
+	width: 500px;
+	height: 600px;
+	max-height: 600px;
+	overflow: auto;
+}
+.search-popup-result::-webkit-scrollbar{
+	display: none;
+}
+.search-popup-result .item{
+	display: flex;
+	margin-bottom: 20px;
+}
+.search-popup-result .item .item-detail a{
+	color: #ffffff;
+}
+.search-popup-result .item .item-detail p{
+	color: #999;
+}
+@media only screen and (max-width: 767px){
+	.search-popup-result{
+		width: 100%;
+		padding: 0 15px;
+	}
+}
+@media only screen and (max-width: 991px){
+/**
+	Header
+ */
+	.account-and-search .search-switch, .account-and-search .header-login , .account-and-search .account{
+		padding: 0 20px;
+	}
+	.account-and-search .header__menu.mobile-menu{
+		display: block;
+	}
+
+	.account-and-search .header__menu ul li:hover .dropdown{
+		top: 40px;
+	}
+	.mobile-menu-account{
+		display: block;
+	}
 }
 

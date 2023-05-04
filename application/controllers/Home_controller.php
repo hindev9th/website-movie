@@ -40,6 +40,10 @@ class Home_controller extends CI_Controller {
 		$this->load->view("include/footer");
 	}
 
+	public function searchPopup(){
+		$query['data'] = $this->home_model->searchPopup();
+		$this->load->view('user/template/search_popup_result',$query);
+	}
 
 
 }

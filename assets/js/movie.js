@@ -205,6 +205,24 @@
 		}
 	});
 
+	$('#search-input').keyup(function (){
+		var value = $(this).val();
+		if (value.length > 1){
+			$.ajax({
+				url: base_url + 'search/popup',
+				type : 'get',
+				data : {
+					'search' : value,
+				},beforeSend : function (){
+				},success : function (data){
+					$('.search-popup-result').html(data);
+				},error : function (data){
+					console.error(data);
+				}
+			})
+		}
+	})
+
 	/**
 	 *
 	 * @param time

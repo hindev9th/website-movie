@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="zxx">
 <head>
 	<meta charset="UTF-8">
 	<meta name="description" content="Anime Template">
@@ -44,13 +46,18 @@
 								</li>
 								<li><a href="./blog.html">Our Blog</a></li>
 								<li><a href="#">Contacts</a></li>
+								<?php if ($this->session->has_userdata('customer')): ?>
+									<div class="mobile-menu-account">
+										<a href="<?=base_url().'logout'?>" class="header-login">Logout</a>
+									</div>
+								<?php endif; ?>
 							</ul>
 						</nav>
 					</div>
 				</div>
 				<div class="col-lg-2">
 					<div class="header__right account-and-search">
-						<a href="#" class="search-switch"><span class="icon_search"></span></a>
+						<a  class="search-switch"><span class="icon_search"></span></a>
 						<?php if (!$this->session->has_userdata('customer')): ?>
 							<a href="<?=base_url().'login'?>" class="header-login"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
 						<?php endif; ?>
@@ -61,7 +68,6 @@
 									<ul class="dropdown account-dropdown">
 										<li><a href="./anime-watching.html">Account</a></li>
 										<li><a href="./categories.html">Follow</a></li>
-										<li><a href="./anime-details.html">History</a></li>
 										<li><a href="<?=base_url().'logout'?>" id="logout">Logout</a></li>
 									</ul>
 								</li>
@@ -71,36 +77,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="mobile-menu-wrap">
-				<div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0"
-											  class="slicknav_btn slicknav_collapsed"><span
-							class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span
-								class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span
-								class="slicknav_icon-bar"></span></span></a>
-					<nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-						<ul>
-							<li class="active"><a href="<?=base_url() ?>" role="menuitem">Homepage</a></li>
-							<li class="slicknav_collapsed slicknav_parent"><a href="#" role="menuitem" aria-haspopup="true"
-																			  tabindex="-1"
-																			  class="slicknav_item slicknav_row"><a
-										href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-									<span class="slicknav_arrow">►</span></a>
-								<ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-									<li><a href="./categories.html" role="menuitem" tabindex="-1">Categories</a></li>
-									<li><a href="./anime-details.html" role="menuitem" tabindex="-1">Anime Details</a></li>
-									<li><a href="./anime-watching.html" role="menuitem" tabindex="-1">Anime Watching</a>
-									</li>
-									<li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
-									<li><a href="./signup.html" role="menuitem" tabindex="-1">Sign Up</a></li>
-									<li><a href="./login.html" role="menuitem" tabindex="-1">Login</a></li>
-								</ul>
-							</li>
-							<li><a href="./blog.html" role="menuitem">Our Blog</a></li>
-							<li><a href="#" role="menuitem">Contacts</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
+			<div id="mobile-menu-wrap"></div>
 		</div>
 	</header>
 	<!-- Header End -->

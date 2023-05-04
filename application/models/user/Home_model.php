@@ -166,7 +166,7 @@ class Home_model extends CI_Model
    		 m.views,m.image,m.imageSidebar,m.isHighlights, ep.createAt');
 		$this->db->from('movies m');
 		$this->db->join('episodes ep', 'm.id = ep.movieId', 'left');
-		$this->db->like('m.genre', '%Movies%');
+		$this->db->like('m.genre', 'Movie');
 		$this->db->order_by('ep.createAt', 'DESC');
 		$this->db->limit(6);
 		return $this->db->get()->result();
@@ -178,6 +178,13 @@ class Home_model extends CI_Model
 	 */
 	public function getSidebar(){
 		$this->db->where('isSidebar',1);
+		return $this->db->get($this->tableMovies)->result();
+	}
+
+	public function searchPopup(){
+		$value = $this->input->get("search");
+		$this->db->like('name',$value);
+		$this->db->limit(10);
 		return $this->db->get($this->tableMovies)->result();
 	}
 }
