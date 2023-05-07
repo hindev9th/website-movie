@@ -710,6 +710,7 @@ ol {
 	background: rgba(255, 255, 255, 0.2);
 	border-radius: 50px;
 	display: inline-block;
+	white-space: nowrap;
 }
 
 .product__item__text h5 a {

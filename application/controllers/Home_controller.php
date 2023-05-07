@@ -23,6 +23,7 @@ class Home_controller extends CI_Controller {
 	{
 
 		$config['title'] = 'Wibu';
+		$config['select'] = 1;
 
 		$query['sidebar'] = $this->home_model->getSidebar();
 		$query['new_movies'] = $this->home_model->getNewMovies();
@@ -40,6 +41,10 @@ class Home_controller extends CI_Controller {
 		$this->load->view("include/footer");
 	}
 
+	/**
+	 * Search popup in header
+	 * return template result
+	 */
 	public function searchPopup(){
 		$query['data'] = $this->home_model->searchPopup();
 		$this->load->view('user/template/search_popup_result',$query);

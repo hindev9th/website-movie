@@ -33,19 +33,17 @@
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
 							<ul>
-								<li class="active"><a href="<?=base_url() ?>">Homepage</a></li>
-								<li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-									<ul class="dropdown">
-										<li><a href="./categories.html">Categories</a></li>
-										<li><a href="./anime-details.html">Anime Details</a></li>
-										<li><a href="./anime-watching.html">Anime Watching</a></li>
-										<li><a href="./blog-details.html">Blog Details</a></li>
-										<li><a href="<?=base_url().'register'?>">Register</a></li>
-										<li><a href="<?=base_url().'login'?>">Login</a></li>
+								<?php $select = $select ?? 0; ?>
+								<li class="<?= $select == 1 ? 'active' : '' ?>"><a href="<?=base_url() ?>">Homepage</a></li>
+								<li class="<?= $select == 2 ? 'active' : '' ?>"><a href="<?=base_url('genre')?>">Genres <span class="arrow_carrot-down"></span></a>
+									<ul class="dropdown genre-dropdown p-2">
+										<?php foreach (getAllGenres() as $item): ?>
+											<li class="border mb-1 mr-1"><a href="<?=base_url('genre')?>" class="header-genre-item"><?= $item->name ?></a></li>
+										<?php endforeach; ?>
 									</ul>
 								</li>
-								<li><a href="./blog.html">Our Blog</a></li>
-								<li><a href="#">Contacts</a></li>
+								<li class="<?= $select == 3 ? 'active' : '' ?>"><a href="./blog.html">Our Blog</a></li>
+								<li class="<?= $select == 4 ? 'active' : '' ?>"><a href="#">Contacts</a></li>
 								<?php if ($this->session->has_userdata('customer')): ?>
 									<div class="mobile-menu-account">
 										<a href="<?=base_url().'logout'?>" class="header-login">Logout</a>

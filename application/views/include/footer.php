@@ -38,8 +38,8 @@
 <div class="search-model">
 	<div class="h-100 d-flex align-items-center justify-content-center flex-column">
 		<div class="search-close-switch"><i class="icon_close"></i></div>
-		<form class="search-model-form">
-			<input type="text" id="search-input" placeholder="Search here.....">
+		<form action="<?=base_url('search')?>" class="search-model-form" method="get">
+			<input type="text" name="search" id="search-input" placeholder="Search here.....">
 		</form>
 		<ul class="search-popup-result">
 		</ul>

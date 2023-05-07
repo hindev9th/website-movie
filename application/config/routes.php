@@ -81,3 +81,10 @@ $route['account/follow'] = 'user/account_controller/addFollow';
  * Search
  */
 $route['search/popup'] = 'home_controller/searchPopup';
+$route['search'] = 'user/category_controller/search';
+/**
+ * Genres page
+ */
+$route['genre'] = 'user/category_controller/index';
+$route['genre/filter'] = 'user/category_controller/filterMovies';
+

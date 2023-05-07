@@ -175,14 +175,14 @@
 			data: {
 				'customerId': customerId,
 				'movieId': movieId,
-			},beforeSend : function (){
+			}, beforeSend: function () {
 				$(".loader").fadeIn();
 				$("#preloder").fadeIn();
-			},success : function (data) {
+			}, success: function (data) {
 				$(".loader").fadeOut();
 				$("#preloder").delay(200).fadeOut("slow");
 				console.log("ok");
-			},error : function (data){
+			}, error: function (data) {
 				$(".loader").fadeOut();
 				$("#preloder").delay(200).fadeOut("slow");
 			}
@@ -205,23 +205,175 @@
 		}
 	});
 
-	$('#search-input').keyup(function (){
+	/**
+	 * Auto search when key up
+	 */
+	$('#search-input').keyup(function () {
 		var value = $(this).val();
-		if (value.length > 1){
+		if (value.length > 1) {
 			$.ajax({
 				url: base_url + 'search/popup',
-				type : 'get',
-				data : {
-					'search' : value,
-				},beforeSend : function (){
-				},success : function (data){
+				type: 'get',
+				data: {
+					'search': value,
+				}, beforeSend: function () {
+				}, success: function (data) {
 					$('.search-popup-result').html(data);
-				},error : function (data){
+				}, error: function (data) {
 					console.error(data);
 				}
 			})
 		}
 	})
+
+	// $('.header-genre-item').click(function (e) {
+	// 	e.preventDefault();
+	// 	var genre = $(this).text();
+	// 	$.ajax({
+	// 		url: base_url + 'genre',
+	// 		type: 'get',
+	// 		data: {
+	// 			genre: genre,
+	// 		}, beforeSend: function () {
+	// 			// $(".loader").fadeIn();
+	// 			// $("#preloder").fadeIn();
+	// 		}, success: function (data) {
+	// 			$("html").html(data)
+	//
+	// 			$(".loader").fadeOut();
+	// 			$("#preloder").delay(200).fadeOut("slow");
+	// 		}, error: function (data) {
+	// 			$(".loader").fadeOut();
+	// 			$("#preloder").delay(200).fadeOut("slow");
+	// 			console.log(data);
+	// 		}
+	// 	})
+	// });
+
+	/**
+	 * begin filter category ajax
+	 * @param value
+	 * @param filter
+	 * @param order
+	 * @param index
+	 */
+	function filterMovies(value, filter, order, index) {
+		$.ajax({
+			url: base_url + 'genre/filter',
+			type: 'get',
+			dataType: 'json',
+			data: {
+				search: value,
+				filter: filter,
+				order: order,
+				index: index,
+			}, beforeSend: function () {
+				$(".loader").fadeIn();
+				$("#preloder").fadeIn();
+			}, success: function (data) {
+				updateCategoryFilterResult(data);
+				$(".loader").fadeOut();
+				$("#preloder").delay(200).fadeOut("slow");
+			}, error: function (data) {
+				$(".loader").fadeOut();
+				$("#preloder").delay(200).fadeOut("slow");
+				console.log(data);
+			}
+		})
+	}
+
+	$('.genre-item').click(function () {
+		var value = $('.search-value').val();
+		var all = $(".genre-item:checkbox:checked").map(function () {
+			return this.value;
+		}).get();
+		var select = $('.filter-select').val();
+		var index = $('.current-page').text();
+
+		filterMovies(value, all.join(), select, index);
+	})
+
+	$('.filter-select').change(function () {
+		var value = $('.search-value').val();
+		var all = $(".genre-item:checkbox:checked").map(function () {
+			return this.value;
+		}).get();
+		var select = this.value;
+		var index = $('.current-page').text();
+
+		filterMovies(value, all.join(), select, index);
+
+	});
+
+	$(document).on('click', '.next-page-genre', function (e) {
+		e.preventDefault();
+		var value = $('.search-value').val();
+		var all = $(".genre-item:checkbox:checked").map(function () {
+			return this.value;
+		}).get();
+		var select = $('.filter-select').val();
+		var index = $('.current-page').text();
+		index = parseInt(index);
+		filterMovies(value, all.join(), select, index + 1);
+	})
+
+	$(document).on('click', '.page-genre', function (e) {
+		e.preventDefault();
+		var value = $('.search-value').val();
+		var all = $(".genre-item:checkbox:checked").map(function () {
+			return this.value;
+		}).get();
+		var select = $('.filter-select').val();
+		var index = $(this).text();
+
+		filterMovies(value, all.join(), select, index);
+	});
+
+	function updateCategoryFilterResult(data) {
+		var html = ``;
+		var pagi = ``;
+
+		for (var item of data.data) {
+			html += `<div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="product__item">
+                  <div class="product__item__pic set-bg"
+                     data-setbg="${base_url}assets/img/anime/${item.image}" style="background-image : url(${base_url}assets/img/anime/${item.image});">
+                    <div class="ep">${item.episodes + ' / ' + (item.totalEpisode > 0 ? item.totalEpisode : '?')}</div>
+                    <div class="comment"><i class="fa fa-comments"></i> ${item.reviewCount}
+                    </div>
+                    <div class="view"><i class="fa fa-eye"></i> ${item.views}</div>
+                  </div>
+                  <div class="product__item__text">
+                    <ul class="list-genre" data-genre="<?= $item->genre ?>">
+                    </ul>
+                    <h5><a href="${base_url + 'movie/' + item.url}">${item.name}</a></h5>
+                  </div>
+                </div>
+              </div>`
+		}
+
+
+		var countRow = data.countAll / 18;
+		var current_page = data.current_page;
+		var iFirst = current_page >= 4 && countRow > 5 ? current_page - 2 : 1;
+		var end = countRow > (iFirst + 4) ? iFirst + 4 : countRow;
+		var num = 0;
+
+		for (var i = iFirst; i <= end; i++) {
+			num++;
+			pagi += `<a href="#" class="page-genre ${current_page == i ? 'current-page' : ''}">${i}</a>`
+			if (num === 5) {
+				pagi += `<a href="#" class="next-page-genre"><i class="fa fa-angle-double-right"></i></a>`
+			}
+		}
+
+		$('#movie-filter').html(html);
+		$('.product__pagination').html(pagi);
+	}
+
+	/**
+	 * end filter category
+	 */
 
 	/**
 	 *

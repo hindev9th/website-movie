@@ -109,3 +109,15 @@ if (!function_exists('format_time')) {
 		return $startTime;
 	}
 }
+
+/**
+ * get all genres in db
+ * @return array|object|null
+ */
+if (!function_exists('getAllGenres')){
+	function getAllGenres(){
+		$ci = get_instance();
+		$ci->load->model('user/home_model');
+		return $ci->home_model->getGenres();
+	}
+}

@@ -32,6 +32,18 @@ class Home_model extends CI_Model
 	 */
 	private string $tableCustomers = 'customers';
 
+	/**
+	 * @var string $tableGenre
+	 */
+	private string $tableGenre = 'genres';
+
+	/**
+	 * get all genres in db
+	 * @return array|array[]|object|object[]
+	 */
+	public function getGenres(){
+		return $this->db->get($this->tableGenre)->result();
+	}
 
 	/**
 	 * get data top view by current date
@@ -181,6 +193,10 @@ class Home_model extends CI_Model
 		return $this->db->get($this->tableMovies)->result();
 	}
 
+	/**
+	 * handle find name movie
+	 * @return array|array[]|object|object[]
+	 */
 	public function searchPopup(){
 		$value = $this->input->get("search");
 		$this->db->like('name',$value);

@@ -20,12 +20,12 @@
 - Anime add share
 - Login page , register page ,logout
 - Count view for video
+- Anime category page
 - Search popup
+- Search page
 ~~~~
 # Function not working
 ~~~~
-- Search page
-- Anime category page
 - Blog page
 - Blog detail page
 - Account detail page
