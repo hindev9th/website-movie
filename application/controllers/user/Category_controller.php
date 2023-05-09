@@ -18,14 +18,16 @@ class Category_controller extends CI_Controller
 
 	public function index(){
 		$filter = $this->input->get('genre') ?? '';
+		$order = $this->input->get('order') ?? '';
 
 		$config['title'] = 'Genres';
 		$config['select'] = 2;
 
-		$query['data'] = $this->category_model->getMovies($filter);
+		$query['data'] = $this->category_model->getMovies($filter,$order);
 		$query['countAll'] = $this->category_model->getCountRowfilter('',$filter);
 		$query['current_page'] = 1;
 		$query['filter'] = $filter;
+		$query['order'] = $order;
 
 		$query['top_day'] = $this->home_model->getTopViewDate();
 		$query['top_week'] = $this->home_model->getTopViewWeek();

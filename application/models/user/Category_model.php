@@ -28,12 +28,24 @@ class Category_model extends CI_Model
 		return $this->db->get($this->tableMovies)->result();
 	}
 
-	public function getMovies(string $genre)
+	public function getMovies(string $genre, string $order)
 	{
-		$this->db->select("m.*,(SELECT COUNT(*) FROM movie_reviews rv WHERE rv.movieId = m.id) as reviewCount");
+
+		$this->db->select("m.*,(SELECT COUNT(*) FROM movie_reviews rv WHERE rv.movieId = m.id) as reviewCount, ep.createAt as newEpTime");
 		$this->db->from('movies m');
 		$this->db->join('movie_reviews rv', 'm.id = rv.movieId', 'left');
+		$this->db->join('(SELECT movieId, MAX(createAt) AS latest_createAt FROM episodes GROUP BY movieId) latest_ep', 'm.id = latest_ep.movieId', 'left');
+		$this->db->join($this->tableEpisodes . ' ep', 'latest_ep.movieId = ep.movieId AND latest_ep.latest_createAt = ep.createAt', 'left');
 		$this->db->like('m.genre', $genre);
+		if (!empty($order)) {
+			if ($order === 'movies') {
+				$this->db->order_by('m.createAt', 'DESC');
+			} elseif ($order === 'update') {
+				$this->db->order_by('newEpTime', 'DESC');
+			} else {
+				$this->db->order_by('m.name', $order);
+			}
+		}
 		$this->db->group_by('m.id');
 		$this->db->limit(18);
 		return $this->db->get($this->tableMovies)->result();

@@ -38,7 +38,7 @@
 								<li class="<?= $select == 2 ? 'active' : '' ?>"><a href="<?=base_url('genre')?>">Genres <span class="arrow_carrot-down"></span></a>
 									<ul class="dropdown genre-dropdown p-2">
 										<?php foreach (getAllGenres() as $item): ?>
-											<li class="border mb-1 mr-1"><a href="<?=base_url('genre')?>" class="header-genre-item"><?= $item->name ?></a></li>
+											<li class="border mb-1 mr-1"><a href="<?=base_url('genre?genre='.$item->name)?>" class="header-genre-item"><?= $item->name ?></a></li>
 										<?php endforeach; ?>
 									</ul>
 								</li>

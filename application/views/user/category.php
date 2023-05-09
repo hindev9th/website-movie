@@ -30,10 +30,10 @@
 								<div class="product__page__filter">
 									<p>Order by:</p>
 									<select class="filter-select">
-										<option selected value="ASC">A-Z</option>
-										<option value="DESC">Z-A</option>
-										<option value="update">New update</option>
-										<option value="movies">New movies</option>
+										<option <?= !isset($order) ? 'selected' : '' ?>  value="ASC">A-Z</option>
+										<option <?= isset($order) && $order == 'DESC' ? 'selected' : '' ?> value="DESC">Z-A</option>
+										<option <?= isset($order) && $order == 'update' ? 'selected' : '' ?> value="update">New update</option>
+										<option <?= isset($order) && $order == 'movies' ? 'selected' : '' ?> value="movies">New movies</option>
 									</select>
 								</div>
 								<input type="hidden" class="search-value" value="<?= $search ?? '' ?>" readonly>
@@ -43,7 +43,7 @@
 							<ul class="filter-genre-dropdown p-2">
 								<?php foreach (getAllGenres() as $item) : ?>
 									<li>
-										<input type="checkbox" <?= isset($filter) && $filter == $item->name ? 'checked disabled' : '' ?>  id="genre-<?= $item->id ?>" class="genre-item"
+										<input type="checkbox" <?= isset($filter) && $filter == $item->name ? 'checked' : '' ?>  id="genre-<?= $item->id ?>" class="genre-item"
 											   value="<?= $item->name ?>">
 										<label for="genre-<?= $item->id ?>"
 											   disabled="disabled"><?= $item->name ?></label>
@@ -64,7 +64,11 @@
 										<div class="view"><i class="fa fa-eye"></i> <?= $item->views ?></div>
 									</div>
 									<div class="product__item__text">
-										<ul class="list-genre" data-genre="<?= $item->genre ?>">
+										<ul class="list-genre">
+											<?php $genres = explode(', ',($item->genre ?? '')) ?>
+											<?php foreach ($genres as $genre): ?>
+												<li><?=$genre?></li>
+											<?php endforeach; ?>
 										</ul>
 										<h5><a href="<?= base_url('movie/' . $item->url) ?>"><?= $item->name ?></a></h5>
 									</div>

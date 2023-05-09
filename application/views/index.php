@@ -39,7 +39,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<div class="btn__all">
-								<a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+								<a href="<?=base_url('genre?order=update')?>" class="primary-btn">View All <span class="arrow_right"></span></a>
 							</div>
 						</div>
 					</div>
@@ -56,8 +56,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="view"><i class="fa fa-eye"></i> <?= $item->views ?></div>
 										</div>
 										<div class="product__item__text">
-											<ul class="list-genre" data-genre="<?= $item->genre ?>">
-
+											<ul class="list-genre">
+												<?php $genres = explode(', ',($item->genre ?? '')) ?>
+												<?php foreach ($genres as $genre): ?>
+													<li><?=$genre?></li>
+												<?php endforeach; ?>
 											</ul>
 											<h5><a href="<?= base_url('movie/' . $item->url) ?>"><?= $item->name ?></a>
 											</h5>
@@ -94,8 +97,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="view"><i class="fa fa-eye"></i> <?= $item->views ?></div>
 										</div>
 										<div class="product__item__text">
-											<ul class="list-genre" data-genre="<?= $item->genre ?>">
-
+											<ul class="list-genre">
+												<?php $genres = explode(', ',($item->genre ?? '')) ?>
+												<?php foreach ($genres as $genre): ?>
+													<li><?=$genre?></li>
+												<?php endforeach; ?>
 											</ul>
 											<h5><a href="<?= base_url('movie/' . $item->url) ?>"><?= $item->name ?></a>
 											</h5>
@@ -115,7 +121,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<div class="btn__all">
-								<a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+								<a href="<?=base_url('genre?genre=Movie')?>" class="primary-btn">View All <span class="arrow_right"></span></a>
 							</div>
 						</div>
 					</div>
@@ -132,8 +138,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="view"><i class="fa fa-eye"></i> <?= $item->views ?></div>
 										</div>
 										<div class="product__item__text">
-											<ul class="list-genre" data-genre="<?= $item->genre ?>">
-
+											<ul class="list-genre">
+												<?php $genres = explode(', ',($item->genre ?? '')) ?>
+												<?php foreach ($genres as $genre): ?>
+													<li><?=$genre?></li>
+												<?php endforeach; ?>
 											</ul>
 											<h5><a href="<?= base_url('movie/' . $item->url) ?>"><?= $item->name ?></a>
 											</h5>
@@ -153,7 +162,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<div class="btn__all">
-								<a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+								<a href="<?=base_url('genre?genre=Live Active')?>" class="primary-btn">View All <span class="arrow_right"></span></a>
 							</div>
 						</div>
 					</div>
@@ -170,7 +179,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="view"><i class="fa fa-eye"></i> <?= $item->views ?></div>
 										</div>
 										<div class="product__item__text">
-											<ul class="list-genre" data-genre="<?= $item->genre ?>">
+											<ul class="list-genre">
+												<?php $genres = explode(', ',($item->genre ?? '')) ?>
+												<?php foreach ($genres as $genre): ?>
+													<li><?=$genre?></li>
+												<?php endforeach; ?>
 											</ul>
 											<h5><a href="<?= base_url('movie/' . $item->url) ?>"><?= $item->name ?></a>
 											</h5>

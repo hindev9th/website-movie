@@ -334,6 +334,12 @@
 		var pagi = ``;
 
 		for (var item of data.data) {
+			var genres = item.genre.split(', ');
+			var htmlGenre = ``;
+			for(var genre of genres){
+				htmlGenre += `<li>${genre}</li>`;
+			}
+
 			html += `<div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="product__item">
                   <div class="product__item__pic set-bg"
@@ -344,8 +350,9 @@
                     <div class="view"><i class="fa fa-eye"></i> ${item.views}</div>
                   </div>
                   <div class="product__item__text">
-                    <ul class="list-genre" data-genre="<?= $item->genre ?>">
-                    </ul>
+                    <ul class="list-genre">`+
+					htmlGenre +
+                    `</ul>
                     <h5><a href="${base_url + 'movie/' + item.url}">${item.name}</a></h5>
                   </div>
                 </div>
@@ -420,19 +427,6 @@
 			second: 'numeric'
 		}) + ' ' + startTime.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'});
 	}
-
-	$(document).ready(function () {
-		window.setTimeout(function () {
-			$('.list-genre').each(function (index) {
-				var genre = $(this).attr('data-genre').split(", ");
-				var me = $(this);
-				$.each(genre, function (index, value) {
-					me.append(`<li>${value}</li>`);
-				})
-			});
-		}, 200);
-
-	});
 
 	/**
 	 * auto update time ago of comment movie

@@ -161,7 +161,7 @@ class Home_model extends CI_Model
    		 m.views,m.image,m.imageSidebar,m.isHighlights, ep.createAt');
 		$this->db->from('movies m');
 		$this->db->join('episodes ep', 'm.id = ep.movieId', 'left');
-		$this->db->like('m.genre', '%LiveAction%');
+		$this->db->like('m.genre', 'Live Action');
 		$this->db->order_by('ep.createAt', 'DESC');
 		$this->db->limit(6);
 		return $this->db->get()->result();
